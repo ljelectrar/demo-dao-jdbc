@@ -7,9 +7,14 @@ import model.entities.Seller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
+        Locale.setDefault(Locale.US);
+        Scanner sc = new Scanner(System.in);
 
         SellerDao sellerDao = DaoFactory.createSellerDao();
 
@@ -37,13 +42,23 @@ public class Main {
 
         System.out.println("Inserted! New id: " + seller1.getId());
 
-        System.out.println("\n\n--- Test Nº4: Seller Update ---");
+        System.out.println("\n\n--- Test Nº5: Seller Update ---");
         seller = sellerDao.findById(1);
 
         seller.setName("Marta Way");
         sellerDao.update(seller);
 
         System.out.println("Update completed!");
-        
+
+        System.out.println("\n\n--- Test Nº6: Seller Delete ---");
+
+        System.out.println("Insert id for delete test: ");
+        int id = sc.nextInt();
+
+        sellerDao.deleteById(id);
+        System.out.println("Delete completed");
+
+        sc.close();
+
     }
 }
