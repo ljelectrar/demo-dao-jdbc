@@ -31,11 +31,19 @@ public class Main {
             System.out.println(obj);
         }
 
-        System.out.println("\n\n--- Test Nº4: Sellet Insert Data ---");
+        System.out.println("\n\n--- Test Nº4: Seller Insert Data ---");
         Seller seller1 = new Seller(null, "Greg", "greg@gmail.com", new Date(), 1500.55, department);
         sellerDao.insert(seller1);
 
         System.out.println("Inserted! New id: " + seller1.getId());
 
+        System.out.println("\n\n--- Test Nº4: Seller Update ---");
+        seller = sellerDao.findById(1);
+
+        seller.setName("Marta Way");
+        sellerDao.update(seller);
+
+        System.out.println("Update completed!");
+        
     }
 }
